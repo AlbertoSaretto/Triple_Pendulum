@@ -1,0 +1,29 @@
+set terminal gif animate delay 1
+set output "PendoloTriplo_caos.gif"
+set key noautotitle
+set size square
+n=1000
+do for [i=0:(n-1)]{
+	set multiplot layout 1,1
+	plot [-4:4][-4:4] 'pendolo_triplo_1.txt' using 3:4 every :::i::i lt rgb "#b22222"  lw 4  pt 7 ps 1, \
+	'pendolo_triplo_1.txt' using 5:6 every :::i::i lt rgb "#b22222" lw 4 pt 7 ps 1, \
+	'pendolo_triplo_1.txt' using 7:8 every :::i::i lt rgb "#b22222" lw 4 pt 7 ps 1, \
+	'pendolo_triplo_1.txt' using 1:2:($3-$1):($4-$2) every :::i::i with vectors nohead 
+	plot [-4:4][-4:4] 'pendolo_triplo_1.txt' using 3:4:($5-$3):($6-$4) every :::i::i with vectors nohead
+	plot [-4:4][-4:4] 'pendolo_triplo_1.txt' using 5:6:($7-$5):($8-$6) every :::i::i with vectors nohead
+
+	plot [-4:4][-4:4] 'pendolo_triplo_2.txt' using 3:4 every :::i::i lt rgb "#22b222"  lw 4  pt 7 ps 1, \
+	'pendolo_triplo_2.txt' using 5:6 every :::i::i lt rgb "#22b222" lw 4 pt 7 ps 1, \
+	'pendolo_triplo_2.txt' using 7:8 every :::i::i lt rgb "#22b222" lw 4 pt 7 ps 1, \
+	'pendolo_triplo_2.txt' using 1:2:($3-$1):($4-$2) every :::i::i with vectors nohead 
+	plot [-4:4][-4:4] 'pendolo_triplo_2.txt' using 3:4:($5-$3):($6-$4) every :::i::i with vectors nohead
+	plot [-4:4][-4:4] 'pendolo_triplo_2.txt' using 5:6:($7-$5):($8-$6) every :::i::i with vectors nohead 
+
+	plot [-4:4][-4:4] 'pendolo_triplo_3.txt' using 3:4 every :::i::i lt rgb "#2222b2"  lw 4  pt 7 ps 1, \
+	'pendolo_triplo_3.txt' using 5:6 every :::i::i lt rgb "#2222b2" lw 4 pt 7 ps 1, \
+	'pendolo_triplo_3.txt' using 7:8 every :::i::i lt rgb "#2222b2" lw 4 pt 7 ps 1, \
+	'pendolo_triplo_3.txt' using 1:2:($3-$1):($4-$2) every :::i::i with vectors nohead 
+	plot [-4:4][-4:4] 'pendolo_triplo_3.txt' using 3:4:($5-$3):($6-$4) every :::i::i with vectors nohead
+	plot [-4:4][-4:4] 'pendolo_triplo_3.txt' using 5:6:($7-$5):($8-$6) every :::i::i with vectors nohead
+	unset multiplot
+}
